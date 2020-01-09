@@ -24,7 +24,7 @@ public class OpenPorts {
                 System.exit(0);
             }
         }
-        System.out.println("Lista de portas abertas: ");
+        System.out.print("IP,PORTA,STATUS");
         new OpenPorts().CheckAllPorts();
     }
 
@@ -64,17 +64,17 @@ public class OpenPorts {
 
         @Override
         public void run() {
-            String str = ip + ";" + port;
+            String str = ip + "," + port;
 
-            if (portaEstaAberta(ip, port, 200)) {
-                str += ";OPEN";
+            if (portIsOpen(ip, port, 200)) {
+                str += ",OPEN";
             }else{
-                str += ";CLOSED";
+                str += ",CLOSED";
             }
-            System.out.println(str);
+            System.out.print("\n" + str);
         }
 
-        public boolean portaEstaAberta(String ip, int porta, int timeout) {
+        public boolean portIsOpen(String ip, int porta, int timeout) {
             try {
                 Socket socket = new Socket();
                 socket.connect(new InetSocketAddress(ip, porta), timeout);
