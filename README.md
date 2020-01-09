@@ -1,6 +1,6 @@
 # OpenPorts
 
-#To use
+## To use
 - javac OpenPorts.java
 - java OpenPort > result.csv
 - java OpenPort IPV4_ADDRESS > result.csv
